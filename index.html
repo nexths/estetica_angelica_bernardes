@@ -8,378 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
-    <style>
-        /* ==========================================================================
-           1. VARIÁVEIS DE CSS & CONFIGURAÇÕES GERAIS (Suas Cores Originais Mantidas)
-           ========================================================================== */
-        :root {
-            --cor-fundo: #23150D;       /* Marrom profundo do fundo da foto */
-            --cor-fundo-alt: #321F14;   /* Variação sutil para o Antes e Depois */
-            --cor-primaria: #FFFDFB;    /* Branco suave para os textos gerais */
-            --cor-secundaria: #E3D1C2;  /* Bege Nude chique do rodapé da foto */
-            --dourado-destaque: #E3D1C2;/* Dourado/Nude acetinado para os títulos */
-            
-            /* Cards simulando o fundo beige do rodapé da foto com leitura em marrom escuro */
-            --glass-fundo: rgba(112, 97, 82, 0.9); 
-            --glass-borda: rgba(227, 209, 194, 0.3); 
-            
-            --fonte-titulo: 'Cormorant Garamond', serif;
-            --fonte-texto: 'Montserrat', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--fonte-texto);
-            background-color: var(--cor-fundo);
-            color: var(--cor-primaria);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* ==========================================================================
-           2. ESTILOS REUTILIZÁVEIS E COMPONENTES GLASSMORPHISM
-           ========================================================================== */
-        .glass-card {
-            background: var(--glass-fundo);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-borda);
-            border-radius: 16px;
-            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.25);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        .titulo-secao {
-            font-family: var(--fonte-titulo);
-            font-size: 2.5rem;
-            text-align: center;
-            font-weight: 400;
-            margin-bottom: 50px;
-            letter-spacing: 1px;
-            color: #FFFFFF;
-        }
-
-        .titulo-secao span, .hero h1 span {
-            font-style: italic;
-            color: var(--dourado-destaque);
-            text-shadow: 0 0 10px rgba(209, 180, 140, 0.2);
-            font-weight: 400;
-        }
-
-        .btn-principal {
-            display: inline-block;
-            padding: 14px 32px;
-            background-color: var(--cor-secundaria);  
-            color: #1E1A17; 
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(206, 179, 149, 0.2);
-        }
-
-        .btn-principal:hover {
-            background-color: #FFFDFB;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 253, 251, 0.3);
-        }
-
-        /* ==========================================================================
-           3. HEADER & MENU FLUTUANTE
-           ========================================================================== */
-        header {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 1100px;
-            z-index: 1000;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(30, 26, 23, 0.7); 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-        }
-
-        .logo {
-            font-family: var(--fonte-titulo);
-            font-size: 1.3rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: #FFFFFF;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        nav a {
-            color: rgba(255, 253, 251, 0.8);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--cor-secundaria);
-        }
-
-        /* ==========================================================================
-           4. HERO SECTION
-           ========================================================================== */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            background: linear-gradient(rgba(30, 26, 23, 0.45), rgba(30, 26, 23, 0.45)), url('background.webp');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: #FFFFFF;
-            text-align: center;
-        }
-
-        .hero-conteudo {
-            max-width: 800px;
-            margin: 0 auto;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-family: var(--fonte-titulo);
-            font-size: 4rem;
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            margin-bottom: 35px;
-            color: rgba(255, 253, 251, 0.85);
-            letter-spacing: 0.5px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-        }
-
-        /* ==========================================================================
-           5. SEÇÃO DE SERVIÇOS FOCADOS
-           ========================================================================== */
-        #servicos {
-            background-color: var(--cor-fundo);
-        }
-
-        .servicos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .servico-card {
-            padding: 40px 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .servico-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(206, 179, 149, 0.4);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .foto-container {
-            width: 100%;
-            height: 200px;
-            margin: 0 auto 20px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .foto-protocolo {
-            width: auto;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .servico-card h3 {
-            font-family: var(--fonte-titulo);
-            font-size: 1.6rem;
-            font-weight: 400;
-            margin-bottom: 12px;
-            color: #FFFFFF;
-        }
-
-        .servico-card p {
-            font-size: 0.9rem;
-            color: rgba(255, 253, 251, 0.7);
-            font-weight: 300;
-        }
-
-        /* ==========================================================================
-           6. SEÇÃO DE ANTES E DEPOIS FIXA (Atualizada e Corrigida)
-           ========================================================================== */
-        #resultados {
-            background-color: var(--cor-fundo-alt);
-        }
-
-        .antes-depois-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 40px;
-        }
-
-        /* Mudamos o slider antigo para um contêiner de imagem perfeito para sua montagem */
-        .moldura-resultado {
-            width: 100%;
-            max-width: 480px; /* Largura elegante para focar bem no rosto e corpo */
-            background: transparent;
-            overflow: hidden;
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: transform 0.3s ease;
-        }
-
-        .moldura-resultado:hover {
-            transform: scale(1.02); /* Sutil efeito chique ao passar o mouse */
-        }
-
-        /* A imagem montada agora preenche 100% de forma proporcional */
-        .foto-resultado-fixa {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        /* ==========================================================================
-           7. ESTRUTURA DOS DEPOIMENTOS (2 na Esquerda e 2 na Direita)
-           ========================================================================== */
-        #depoimentos {
-            background-color: var(--cor-fundo);
-        }
-
-        .depoimentos-grid-duplo {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .coluna-depoimentos {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .depoimento-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            width: 100%;
-        }
-
-        .depoimento-item .glass-card {
-            padding: 20px 25px;
-            border-color: rgba(206, 179, 149, 0.1);
-        }
-
-        /* ==========================================================================
-           8. RODAPÉ (FOOTER)
-           ========================================================================== */
-        footer {
-            background-color: #14110F; 
-            color: #FFF;
-            padding: 80px 0 30px 0;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        footer h2 {
-            font-family: var(--fonte-titulo);
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            color: var(--cor-secundaria);
-            margin-bottom: 35px;
-            font-weight: 300;
-        }
-
-        .diretos {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
-            font-size: 0.8rem;
-            color: #6E6157;
-        }
-
-        /* Responsividade Avançada */
-        @media (max-width: 900px) {
-            .depoimentos-grid-duplo { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.6rem; }
-            .hero p { font-size: 1rem; }
-            .nav-links { display: none; } 
-            header { padding: 12px 20px; width: 95%; top: 15px; }
-            .logo { font-size: 1.1rem; }
-            .titulo-secao { font-size: 2rem; margin-bottom: 35px; }
-            
-            .depoimento-item { flex-direction: column; text-align: center; }
-            .depoimento-item img { margin-bottom: -5px; }
-            
-            .moldura-resultado { max-width: 90%; } /* Garante encaixe perfeito no celular */
-            section { padding: 70px 0; }
-        }
-    </style>
+    <!-- Vinculando o arquivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -392,7 +22,7 @@
                 <a href="#depoimentos">Depoimentos</a>
             </div>
             
-            <a href="https://www.instagram.com/estetica.angelicabernardes" target="_blank" rel="noopener noreferrer" style="color: var(--cor-secundaria); transition: transform 0.3s ease; display: inline-flex; align-items: center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <a href="https://www.instagram.com/estetica.angelicabernardes" target="_blank" rel="noopener noreferrer" class="nav-instagram">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -416,7 +46,7 @@
             
             <div class="servico-card glass-card">
                 <div class="foto-container">
-                    <img src="modelo-1.jpg" alt="Limpeza de Pele" class="foto-protocolo">
+                    <img src="assets/modelo-1.jpg" alt="Limpeza de Pele" class="foto-protocolo">
                 </div>
                 <h3>Limpeza de Pele</h3>
                 <p>Remoção de impurezas, extração cuidadosa e hidratação intensa adaptada ao seu tipo de pele.</p>
@@ -424,7 +54,7 @@
 
             <div class="servico-card glass-card">
                 <div class="foto-container">
-                    <img src="modelo-2.jpg" alt="Drenagem Linfática" class="foto-protocolo">
+                    <img src="assets/modelo-2.jpg" alt="Drenagem Linfática" class="foto-protocolo">
                 </div>
                 <h3>Drenagem Linfática</h3>
                 <p>Movimentos técnicos e suaves focados na redução do inchaço corporal e relaxamento total.</p>
@@ -432,7 +62,7 @@
 
             <div class="servico-card glass-card">
                 <div class="foto-container">
-                    <img src="modelo-3.jpg" alt="Revitalização Facial" class="foto-protocolo">
+                    <img src="assets/modelo-3.jpg" alt="Revitalização Facial" class="foto-protocolo">
                 </div>
                 <h3>Argiloterapia</h3>
                 <p>Um protocolo personalizado com o poder das argilas para as necessidades da sua pele.</p>
@@ -444,13 +74,13 @@
     <section id="resultados">
         <div class="container">
             <h2 class="titulo-secao">A Transformação na <span>Pele</span></h2>
-            <p style="text-align: center; max-width: 600px; margin: -30px auto 40px auto; font-weight: 300; color: rgba(255, 253, 251, 0.7); font-size: 0.95rem;">
+            <p class="subtitulo-resultados">
                 Resultados reais obtidos logo após a aplicação do nosso protocolo.
             </p>
             
             <div class="antes-depois-container">
                 <div class="moldura-resultado">
-                    <img src="antes-e-depois.jpg" alt="Resultado Antes e Depois" class="foto-resultado-fixa">
+                    <img src="assets/antes-e-depois.jpg" alt="Resultado Antes e Depois" class="foto-resultado-fixa">
                 </div>
             </div>
         </div>
@@ -464,19 +94,18 @@
             <div class="coluna-depoimentos">
                 
                 <div class="depoimento-item">
-                    <img src="cliente-maria-fernanda.png" alt="Foto da Maria Fernanda" style="width: 55px; height: 55px; object-fit: cover; border-radius: 50%; flex-shrink: 0; border: 2px solid rgba(206, 179, 149, 0.25);">
-                    <div class="glass-card" style="flex: 1; width: 100%;">
-                        <span style="font-weight: 500; display: block; margin-bottom: 5px; font-size: 0.9rem; color: var(--cor-secundaria);">Maria Fernanda</span>
-                        <p style="margin: 0; font-size: 0.9rem; font-weight: 300; color: #FFFDFB;">"A limpeza de pele é perfeita, ajudou muito na oleosidade e deixou minha pele uma verdadeira pele de boneca. A drenagem é maravilhosa, reduz a retenção e proporciona bem-estar. 
-O atendimento e o ambiente são maravilhosos, a sala é super aconchegante e cheirosa, a gente fica a vontade e é super bem tratado 🥰"</p>
+                    <img src="assets/cliente-maria-fernanda.png" alt="Foto da Maria Fernanda" class="foto-cliente">
+                    <div class="glass-card depoimento-card">
+                        <span class="nome-cliente">Maria Fernanda</span>
+                        <p class="texto-depoimento">"A limpeza de pele é perfeita, ajudou muito na oleosidade e deixou minha pele uma verdadeira pele de boneca. A drenagem é maravilhosa, reduz a retenção e proporciona bem-estar. O atendimento e o ambiente são maravilhosos, a sala é super aconchegante e cheirosa, a gente fica a vontade e é super bem tratado 🥰"</p>
                     </div>
                 </div>
 
                 <div class="depoimento-item">
-                    <img src="cliente-pietra-oliveira.png" alt="Foto da Juliana" style="width: 55px; height: 55px; object-fit: cover; border-radius: 50%; flex-shrink: 0; border: 2px solid rgba(206, 179, 149, 0.25);">
-                    <div class="glass-card" style="flex: 1; width: 100%;">
-                        <span style="font-weight: 500; display: block; margin-bottom: 5px; font-size: 0.9rem; color: var(--cor-secundaria);">Pietra Oliveira</span>
-                        <p style="margin: 0; font-size: 0.9rem; font-weight: 300; color: #FFFDFB;">"Desde que comecei a drenagem semanal, sinto minhas pernas menos cansadas, o corpo mais leve e relaxado. Não abro mão das minhas sessões! Um lugar acolhedor que transmite paz. Amo e indico de olhos fechados. 💖"</p>
+                    <img src="assets/cliente-pietra-oliveira.png" alt="Foto da Pietra Oliveira" class="foto-cliente">
+                    <div class="glass-card depoimento-card">
+                        <span class="nome-cliente">Pietra Oliveira</span>
+                        <p class="texto-depoimento">"Desde que comecei a drenagem semanal, sinto minhas pernas menos cansadas, o corpo mais leve e relaxado. Não abro mão das minhas sessões! Um lugar acolhedor que transmite paz. Amo e indico de olhos fechados. 💖"</p>
                     </div>
                 </div>
 
@@ -485,26 +114,26 @@ O atendimento e o ambiente são maravilhosos, a sala é super aconchegante e che
             <div class="coluna-depoimentos">
                 
                 <div class="depoimento-item">
-                    <img src="cliente-manuela-maria.png" alt="Foto da Camila" style="width: 55px; height: 55px; object-fit: cover; border-radius: 50%; flex-shrink: 0; border: 2px solid rgba(206, 179, 149, 0.25);">
-                    <div class="glass-card" style="flex: 1; width: 100%;">
-                        <span style="font-weight: 500; display: block; margin-bottom: 5px; font-size: 0.9rem; color: var(--cor-secundaria);">Manuela Maria</span>
-                        <p style="margin: 0; font-size: 0.9rem; font-weight: 300; color: #FFFDFB;">"A melhor esteticista da cidade,mãos de fada,atendimento 1000,saímos com o corpo de Barbie… super indico de olhos fechado"</p>
+                    <img src="assets/cliente-manuela-maria.png" alt="Foto da Manuela Maria" class="foto-cliente">
+                    <div class="glass-card depoimento-card">
+                        <span class="nome-cliente">Manuela Maria</span>
+                        <p class="texto-depoimento">"A melhor esteticista da cidade,mãos de fada,atendimento 1000,saímos com o corpo de Barbie… super indico de olhos fechado"</p>
                     </div>
                 </div>
 
                 <div class="depoimento-item">
-                    <img src="cliente-natalia-de-paula.png" alt="Foto da Beatriz" style="width: 55px; height: 55px; object-fit: cover; border-radius: 50%; flex-shrink: 0; border: 2px solid rgba(206, 179, 149, 0.25);">
-                    <div class="glass-card" style="flex: 1; width: 100%;">
-                        <span style="font-weight: 500; display: block; margin-bottom: 5px; font-size: 0.9rem; color: var(--cor-secundaria);">Natalia de Paula</span>
-                        <p style="margin: 0; font-size: 0.9rem; font-weight: 300; color: #FFFDFB;">"O que dizer sobre minha seção com Angélica maravilhosa ela renova meu corpo físico e mental ha mais 10 anos ela não só  cuida de mim ela me escuta excelente profissional mãos abençoada."</p>
+                    <img src="assets/cliente-natalia-de-paula.png" alt="Foto da Natalia de Paula" class="foto-cliente">
+                    <div class="glass-card depoimento-card">
+                        <span class="nome-cliente">Natalia de Paula</span>
+                        <p class="texto-depoimento">"O que dizer sobre minha seção com Angélica maravilhosa ela renova meu corpo físico e mental ha mais 10 anos ela não só cuida de mim ela me escuta excelente profissional mãos abençoada."</p>
                     </div>
                 </div>
 
                 <div class="depoimento-item">
-                    <img src="cliente-gisele-cardoso.png" alt="Foto da Juliana" style="width: 55px; height: 55px; object-fit: cover; border-radius: 50%; flex-shrink: 0; border: 2px solid rgba(206, 179, 149, 0.25);">
-                    <div class="glass-card" style="flex: 1; width: 100%;">
-                        <span style="font-weight: 500; display: block; margin-bottom: 5px; font-size: 0.9rem; color: var(--cor-secundaria);">Gisele Cardoso</span>
-                        <p style="margin: 0; font-size: 0.9rem; font-weight: 300; color: #FFFDFB;">"Amo esse lugar ! A Angélica torna o momento especial e relaxante a ponto de acalmar a alma!"</p>
+                    <img src="assets/cliente-gisele-cardoso.png" alt="Foto da Gisele Cardoso" class="foto-cliente">
+                    <div class="glass-card depoimento-card">
+                        <span class="nome-cliente">Gisele Cardoso</span>
+                        <p class="texto-depoimento">"Amo esse lugar ! A Angélica torna o momento especial e relaxante a ponto de acalmar a alma!"</p>
                     </div>
                 </div>
 

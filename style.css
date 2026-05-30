@@ -1,0 +1,416 @@
+/* ==========================================================================
+   1. VARIÁVEIS DE CSS & CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+:root {
+    --cor-fundo: #23150D;       /* Marrom profundo do fundo da foto */
+    --cor-fundo-alt: #321F14;   /* Variação sutil para o Antes e Depois */
+    --cor-primaria: #FFFDFB;    /* Branco suave para os textos gerais */
+    --cor-secundaria: #E3D1C2;  /* Bege Nude chique do rodapé da foto */
+    --dourado-destaque: #E3D1C2;/* Dourado/Nude acetinado para os títulos */
+    
+    /* Cards simulando o fundo beige do rodapé da foto com leitura em marrom escuro */
+    --glass-fundo: rgba(112, 97, 82, 0.9); 
+    --glass-borda: rgba(227, 209, 194, 0.3); 
+    
+    --fonte-titulo: 'Cormorant Garamond', serif;
+    --fonte-texto: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fonte-texto);
+    background-color: var(--cor-fundo);
+    color: var(--cor-primaria);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. ESTILOS REUTILIZÁVEIS E COMPONENTES GLASSMORPHISM
+   ========================================================================== */
+.glass-card {
+    background: var(--glass-fundo);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-borda);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.25);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 100px 0;
+}
+
+.titulo-secao {
+    font-family: var(--fonte-titulo);
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+}
+
+.titulo-secao span, .hero h1 span {
+    font-style: italic;
+    color: var(--dourado-destaque);
+    text-shadow: 0 0 10px rgba(209, 180, 140, 0.2);
+    font-weight: 400;
+}
+
+.btn-principal {
+    display: inline-block;
+    padding: 14px 32px;
+    background-color: var(--cor-secundaria);  
+    color: #1E1A17; 
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(206, 179, 149, 0.2);
+}
+
+.btn-principal:hover {
+    background-color: #FFFDFB;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 253, 251, 0.3);
+}
+
+/* ==========================================================================
+   3. HEADER & MENU FLUTUANTE
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    z-index: 1000;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(30, 26, 23, 0.7); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+}
+
+.logo {
+    font-family: var(--fonte-titulo);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: rgba(255, 253, 251, 0.8);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--cor-secundaria);
+}
+
+.nav-instagram {
+    color: var(--cor-secundaria); 
+    transition: transform 0.3s ease; 
+    display: inline-flex; 
+    align-items: center;
+}
+
+.nav-instagram:hover {
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   4. HERO SECTION (Apontando para a pasta assets/)
+   ========================================================================== */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(rgba(30, 26, 23, 0.45), rgba(30, 26, 23, 0.45)), url('assets/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.hero-conteudo {
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-bottom: 35px;
+    color: rgba(255, 253, 251, 0.85);
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   5. SEÇÃO DE SERVIÇOS FOCADOS
+   ========================================================================== */
+#servicos {
+    background-color: var(--cor-fundo);
+}
+
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.servico-card {
+    padding: 40px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.servico-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(206, 179, 149, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.foto-container {
+    width: 100%;
+    height: 200px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.foto-protocolo {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+}
+
+.servico-card h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: #FFFFFF;
+}
+
+.servico-card p {
+    font-size: 0.9rem;
+    color: rgba(255, 253, 251, 0.7);
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   6. SEÇÃO DE ANTES E DEPOIS FIXA
+   ========================================================================== */
+#resultados {
+    background-color: var(--cor-fundo-alt);
+}
+
+.subtitulo-resultados {
+    text-align: center; 
+    max-width: 600px; 
+    margin: -30px auto 40px auto; 
+    font-weight: 300; 
+    color: rgba(255, 253, 251, 0.7); 
+    font-size: 0.95rem;
+}
+
+.antes-depois-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.moldura-resultado {
+    width: 100%;
+    max-width: 480px; 
+    background: transparent;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.moldura-resultado:hover {
+    transform: scale(1.02); 
+}
+
+.foto-resultado-fixa {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   7. ESTRUTURA DOS DEPOIMENTOS
+   ========================================================================== */
+#depoimentos {
+    background-color: var(--cor-fundo);
+}
+
+.depoimentos-grid-duplo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.coluna-depoimentos {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.depoimento-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.depoimento-card {
+    flex: 1; 
+    width: 100%;
+    padding: 20px 25px;
+    border-color: rgba(206, 179, 149, 0.1);
+}
+
+.foto-cliente {
+    width: 55px; 
+    height: 55px; 
+    object-fit: cover; 
+    border-radius: 50%; 
+    flex-shrink: 0; 
+    border: 2px solid rgba(206, 179, 149, 0.25);
+}
+
+.nome-cliente {
+    font-weight: 500; 
+    display: block; 
+    margin-bottom: 5px; 
+    font-size: 0.9rem; 
+    color: var(--cor-secundaria);
+}
+
+.texto-depoimento {
+    margin: 0; 
+    font-size: 0.9rem; 
+    font-weight: 300; 
+    color: #FFFDFB;
+}
+
+/* ==========================================================================
+   8. RODAPÉ (FOOTER)
+   ========================================================================== */
+footer {
+    background-color: #14110F; 
+    color: #FFF;
+    padding: 80px 0 30px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+footer h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: var(--cor-secundaria);
+    margin-bottom: 35px;
+    font-weight: 300;
+}
+
+.diretos {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+    font-size: 0.8rem;
+    color: #6E6157;
+}
+
+/* ==========================================================================
+   9. RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 900px) {
+    .depoimentos-grid-duplo { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.6rem; }
+    .hero p { font-size: 1rem; }
+    .nav-links { display: none; } 
+    header { padding: 12px 20px; width: 95%; top: 15px; }
+    .logo { font-size: 1.1rem; }
+    .titulo-secao { font-size: 2rem; margin-bottom: 35px; }
+    
+    .depoimento-item { flex-direction: column; text-align: center; }
+    .depoimento-item img { margin-bottom: -5px; }
+    
+    .moldura-resultado { max-width: 90%; } 
+    section { padding: 70px 0; }
+}

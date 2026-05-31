@@ -160,43 +160,94 @@ nav a:hover {
 }
 
 /* ==========================================================================
-   4. HERO SECTION (Apontando para a pasta assets/)
+   HERO SECTION
    ========================================================================== */
+
 .hero {
     height: 100vh;
+    min-height: 800px;
+
     display: flex;
     align-items: center;
+    justify-content: center;
+
     position: relative;
-    background: linear-gradient(rgba(30, 26, 23, 0.45), rgba(30, 26, 23, 0.45)), url('assets/background.webp');
+
+    background:
+        linear-gradient(
+            rgba(30, 26, 23, 0.35),
+            rgba(30, 26, 23, 0.35)
+        ),
+        url('assets/background.webp');
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
     color: #FFFFFF;
     text-align: center;
 }
 
 .hero-conteudo {
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
     z-index: 2;
 }
 
 .hero h1 {
+    margin-bottom: 25px;
+    text-shadow: 0 2px 15px rgba(0,0,0,.4);
+}
+
+.hero h1 .intro {
+    display: block;
+
     font-family: var(--fonte-titulo);
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 400;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+    line-height: 1;
+    color: #FFFFFF;
+}
+
+.hero h1 .nome {
+    display: block;
+
+    margin-top: 5px;
+
+    font-family: var(--fonte-titulo);
+    font-size: 4.5rem;
+    font-style: italic;
+    font-weight: 400;
+
+    color: var(--cor-secundaria);
+
+    line-height: 1.05;
+
+    text-shadow: 0 0 12px rgba(227, 209, 194, 0.15);
 }
 
 .hero p {
-    font-size: 1.1rem;
+    max-width: 620px;
+
+    margin: 0 auto 35px;
+
+    font-size: 1.05rem;
+    line-height: 1.8;
     font-weight: 300;
-    margin-bottom: 35px;
-    color: rgba(255, 253, 251, 0.85);
-    letter-spacing: 0.5px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+
+    color: rgba(255, 253, 251, 0.9);
+
+    text-shadow: 0 2px 10px rgba(0,0,0,.4);
+}
+
+.hero .btn-principal {
+    padding: 18px 42px;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /* ==========================================================================

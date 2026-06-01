@@ -21,6 +21,7 @@ function fecharVideo() {
     const modal = document.getElementById('videoModal');
     const player = document.getElementById('videoPlayer');
     
+    
     // Remove o estado ativo do CSS escondendo a interface
     modal.classList.remove('ativo');
     
